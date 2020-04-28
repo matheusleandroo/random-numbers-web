@@ -23,7 +23,7 @@ export default function Main() {
     setLoading(true);
 
     try {
-      setNumbers([]);
+      setNumbers('');
 
       if (!validetFileds(params)) return;
 
@@ -44,7 +44,6 @@ export default function Main() {
 
       localStorage.setItem('numbers', JSON.stringify(historic));
     } catch (error) {
-      setNumbers('');
       toast.error(
         'Ocorreu um erro inesperado, tente realizar o processo novamente'
       );
