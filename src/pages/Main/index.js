@@ -4,6 +4,7 @@ import { FaRandom, FaHistory } from 'react-icons/fa';
 import { Container as ContainerBootstrap, Row, Col } from 'react-bootstrap';
 
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { validateNumber, validetFileds } from '../../helpers';
 
 import { Container, Form, SubmitButton, CopyButton, Card } from './styles';
@@ -28,9 +29,20 @@ export default function Main() {
 
       const response = await api.post('/generate', params);
 
-      setNumbers(`${response.data}`.split(',').join(', '));
+      const values = `${response.data}`.split(',').join(', ');
+
+      setNumbers(values);
 
       toast.success('Números gerados com sucesso');
+
+      let historic = localStorage.getItem('numbers');
+
+      if (historic === null) historic = [];
+      else historic = JSON.parse(historic);
+
+      historic.push({ values });
+
+      localStorage.setItem('numbers', JSON.stringify(historic));
     } catch (error) {
       toast.error(
         'Ocorreu um erro inesperado, tente realizar o processo novamente'
@@ -43,7 +55,9 @@ export default function Main() {
   return (
     <>
       <Container>
-        <FaHistory size="15px" />
+        <Link to="/historic">
+          <FaHistory size="15px" />
+        </Link>
         <h1>
           <FaRandom />
           Números Aleatórios
