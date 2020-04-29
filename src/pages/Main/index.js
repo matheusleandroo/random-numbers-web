@@ -19,7 +19,8 @@ export default function Main() {
   const [numbers, setNumbers] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(params) {
+  async function handleSubmit(e, params) {
+    e.preventDefault();
     setLoading(true);
 
     try {
@@ -63,7 +64,7 @@ export default function Main() {
           Números Aleatórios
         </h1>
 
-        <Form onSubmit={() => []}>
+        <Form onSubmit={(e) => handleSubmit(e, payload)}>
           <ContainerBootstrap>
             <Row>
               <Col md={6}>
@@ -128,13 +129,7 @@ export default function Main() {
             </Row>
             <Row>
               <Col>
-                <SubmitButton
-                  type="button"
-                  loading={loading ? 1 : 0}
-                  onClick={() => handleSubmit(payload)}
-                >
-                  Gerar
-                </SubmitButton>
+                <SubmitButton loading={loading ? 1 : 0}>Gerar</SubmitButton>
               </Col>
             </Row>
           </ContainerBootstrap>
