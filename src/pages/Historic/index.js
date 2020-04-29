@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { FaRandom, FaHome } from 'react-icons/fa';
+import { FaRandom, FaHome, FaCopy } from 'react-icons/fa';
 
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
-import { Container, Card } from './styles';
+import copy from 'copy-to-clipboard';
+
+import { Container, DivIcon, Card } from '../styles';
 
 export default function Historic() {
   const [numbers, setNumbers] = useState([]);
@@ -29,17 +31,28 @@ export default function Historic() {
   return (
     <>
       <Container>
-        <Link to="/">
-          <FaHome size="15px" />
-        </Link>
+        <DivIcon>
+          <Link to="/" title="Início">
+            <FaHome size="20px" color="#519739" />
+          </Link>
+        </DivIcon>
         <h1>
           <FaRandom />
           Números Aleatórios
         </h1>
+
         {numbers.length ? (
           <>
             {numbers.map((item) => (
               <Card key={item.values}>
+                <DivIcon
+                  title="Copiar"
+                  onClick={() => {
+                    copy(item.values);
+                  }}
+                >
+                  <FaCopy size="15px" color="#519739" />
+                </DivIcon>
                 <p>{item.values}</p>
               </Card>
             ))}

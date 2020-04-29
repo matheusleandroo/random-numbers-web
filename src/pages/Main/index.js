@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 
-import { FaRandom, FaHistory } from 'react-icons/fa';
+import { FaRandom, FaHistory, FaCopy } from 'react-icons/fa';
 
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+
 import copy from 'copy-to-clipboard';
 import { validateNumber, validetFileds } from '../../helpers';
 
-import { Container, Form, SubmitButton, CopyButton, Card } from './styles';
+import { Form, SubmitButton } from './styles';
+import { Container, DivIcon, Card } from '../styles';
+
 import api from '../../services/api';
 
 export default function Main() {
@@ -56,9 +59,11 @@ export default function Main() {
   return (
     <>
       <Container>
-        <Link to="/historic">
-          <FaHistory size="15px" />
-        </Link>
+        <DivIcon>
+          <Link to="/historic" title="Histórico">
+            <FaHistory size="20px" color="#519739" />
+          </Link>
+        </DivIcon>
         <h1>
           <FaRandom />
           Números Aleatórios
@@ -118,8 +123,14 @@ export default function Main() {
               }}
             />
           </div>
+
           <div>
-            <SubmitButton loading={loading ? 1 : 0}>Gerar</SubmitButton>
+            <SubmitButton
+              loading={loading ? 1 : 0}
+              title="Gerar números aleatórios"
+            >
+              Gerar
+            </SubmitButton>
           </div>
         </Form>
 
@@ -127,18 +138,15 @@ export default function Main() {
           <>
             <hr />
 
-            <div>
-              <CopyButton
-                type="button"
+            <Card>
+              <DivIcon
+                title="Copiar"
                 onClick={() => {
                   copy(numbers);
                 }}
               >
-                Copiar
-              </CopyButton>
-            </div>
-
-            <Card>
+                <FaCopy size="15px" color="#519739" />
+              </DivIcon>
               <p>{numbers}</p>
             </Card>
           </>
