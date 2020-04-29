@@ -69,6 +69,8 @@ export default function Main() {
               <Col md={6}>
                 <input
                   type="text"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
                   placeholder="De"
                   value={payload.minNumber}
                   onChange={(e) => {
@@ -86,6 +88,8 @@ export default function Main() {
               <Col md={6}>
                 <input
                   type="text"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
                   placeholder="Até"
                   value={payload.maxNumber}
                   onChange={(e) => {
@@ -105,6 +109,8 @@ export default function Main() {
               <Col>
                 <input
                   type="text"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
                   placeholder="Quantidade"
                   value={payload.amount}
                   onChange={(e) => {
