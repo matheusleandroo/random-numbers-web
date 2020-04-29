@@ -34,6 +34,7 @@ export const DivIcon = styled.div`
   display: flex;
   justify-content: flex-end;
   opacity: 0.9;
+  margin-bottom: 10px;
 
   &:hover {
     cursor: pointer;
