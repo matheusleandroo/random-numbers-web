@@ -64,6 +64,7 @@ export const SubmitButton = styled.button.attrs((props) => ({
   border-radius: 4px;
   width: 195px;
   min-height: 40px;
+  opacity: 0.9;
 
   display: flex;
   justify-content: center;
@@ -72,6 +73,10 @@ export const SubmitButton = styled.button.attrs((props) => ({
   &[disabled] {
     cursor: not-allowed;
     opacity: 0.6;
+  }
+
+  &:hover {
+    opacity: 1;
   }
 `;
 
@@ -87,6 +92,11 @@ export const CopyButton = styled.button`
   padding: 5px;
   margin-bottom: 15px;
   margin-left: 92%;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
+  }
 
   @media (max-width: 768px) {
     margin-left: 0;
