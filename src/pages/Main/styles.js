@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Card as CardBootstrap } from 'react-bootstrap';
-
 export const Container = styled.div`
   max-width: 700px;
   background: #fff;
@@ -35,7 +33,8 @@ export const Container = styled.div`
 export const Form = styled.form`
   margin-top: 30px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   input {
@@ -63,7 +62,7 @@ export const SubmitButton = styled.button.attrs((props) => ({
   margin-top: 30px;
   padding: 0 15px;
   border-radius: 4px;
-  width: 100%;
+  width: 195px;
   min-height: 40px;
 
   display: flex;
@@ -94,7 +93,7 @@ export const CopyButton = styled.button`
   }
 `;
 
-export const Card = styled(CardBootstrap)`
+export const Card = styled.div`
   border: 1px solid #a7a7a7;
   padding: 10px 15px;
   border-radius: 4px;

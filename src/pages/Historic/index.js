@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { FaRandom, FaHome } from 'react-icons/fa';
-import { Row, Col } from 'react-bootstrap';
 
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -41,25 +40,17 @@ export default function Historic() {
           <>
             {numbers.map((item) => (
               <Card key={item.values}>
-                <Card.Body>
-                  <Row>
-                    <Col>
-                      <p>{item.values}</p>
-                    </Col>
-                  </Row>
-                </Card.Body>
+                <p>{item.values}</p>
               </Card>
             ))}
           </>
         ) : (
           <>
-            <Row>
-              <Col>
-                <h4 style={{ textAlign: 'center' }}>
-                  Nenhum historico encontrado :(
-                </h4>
-              </Col>
-            </Row>
+            <div>
+              <h4 style={{ textAlign: 'center' }}>
+                Nenhum historico encontrado :(
+              </h4>
+            </div>
           </>
         )}
       </Container>

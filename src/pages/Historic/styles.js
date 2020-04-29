@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Card as CardBootstrap } from 'react-bootstrap';
-
 export const Container = styled.div`
   max-width: 700px;
   background: #fff;
@@ -92,7 +90,7 @@ export const CopyButton = styled.button`
   }
 `;
 
-export const Card = styled(CardBootstrap)`
+export const Card = styled.div`
   border: 1px solid #a7a7a7;
   padding: 10px 15px;
   border-radius: 4px;

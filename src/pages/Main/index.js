@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { FaRandom, FaHistory } from 'react-icons/fa';
-import { Container as ContainerBootstrap, Row, Col } from 'react-bootstrap';
 
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
@@ -66,103 +65,81 @@ export default function Main() {
         </h1>
 
         <Form onSubmit={(e) => handleSubmit(e, payload)}>
-          <ContainerBootstrap>
-            <Row>
-              <Col md={6}>
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  inputMode="numeric"
-                  placeholder="De"
-                  value={payload.minNumber}
-                  onChange={(e) => {
-                    if (validateNumber(e.target.value))
-                      setPayload({
-                        ...payload,
-                        minNumber:
-                          e && e.target.value
-                            ? parseInt(e.target.value, 10)
-                            : '',
-                      });
-                  }}
-                />
-              </Col>
-              <Col md={6}>
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  inputMode="numeric"
-                  placeholder="Até"
-                  value={payload.maxNumber}
-                  onChange={(e) => {
-                    if (validateNumber(e.target.value))
-                      setPayload({
-                        ...payload,
-                        maxNumber:
-                          e && e.target.value
-                            ? parseInt(e.target.value, 10)
-                            : '',
-                      });
-                  }}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <input
-                  type="text"
-                  pattern="[0-9]*"
-                  inputMode="numeric"
-                  placeholder="Quantidade"
-                  value={payload.amount}
-                  onChange={(e) => {
-                    if (validateNumber(e.target.value, true))
-                      setPayload({
-                        ...payload,
-                        amount:
-                          e && e.target.value
-                            ? parseInt(e.target.value, 10)
-                            : '',
-                      });
-                  }}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <SubmitButton loading={loading ? 1 : 0}>Gerar</SubmitButton>
-              </Col>
-            </Row>
-          </ContainerBootstrap>
+          <div>
+            <input
+              type="text"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              placeholder="De"
+              value={payload.minNumber}
+              onChange={(e) => {
+                if (validateNumber(e.target.value))
+                  setPayload({
+                    ...payload,
+                    minNumber:
+                      e && e.target.value ? parseInt(e.target.value, 10) : '',
+                  });
+              }}
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              placeholder="Até"
+              value={payload.maxNumber}
+              onChange={(e) => {
+                if (validateNumber(e.target.value))
+                  setPayload({
+                    ...payload,
+                    maxNumber:
+                      e && e.target.value ? parseInt(e.target.value, 10) : '',
+                  });
+              }}
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              placeholder="Quantidade"
+              value={payload.amount}
+              onChange={(e) => {
+                if (validateNumber(e.target.value, true))
+                  setPayload({
+                    ...payload,
+                    amount:
+                      e && e.target.value ? parseInt(e.target.value, 10) : '',
+                  });
+              }}
+            />
+          </div>
+          <div>
+            <SubmitButton loading={loading ? 1 : 0}>Gerar</SubmitButton>
+          </div>
         </Form>
 
         {numbers !== '' && !loading ? (
           <>
             <hr />
 
-            <ContainerBootstrap>
-              <Row>
-                <Col>
-                  <CopyButton
-                    type="button"
-                    onClick={() => {
-                      copy(numbers);
-                    }}
-                  >
-                    Copiar
-                  </CopyButton>
-                </Col>
-              </Row>
-            </ContainerBootstrap>
+            <div>
+              <CopyButton
+                type="button"
+                onClick={() => {
+                  copy(numbers);
+                }}
+              >
+                Copiar
+              </CopyButton>
+            </div>
 
             <Card>
-              <Card.Body>
-                <Row>
-                  <Col>
-                    <p>{numbers}</p>
-                  </Col>
-                </Row>
-              </Card.Body>
+              <p>{numbers}</p>
             </Card>
           </>
         ) : null}
