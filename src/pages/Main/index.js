@@ -5,6 +5,7 @@ import { Container as ContainerBootstrap, Row, Col } from 'react-bootstrap';
 
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import copy from 'copy-to-clipboard';
 import { validateNumber, validetFileds } from '../../helpers';
 
 import { Container, Form, SubmitButton, CopyButton, Card } from './styles';
@@ -145,7 +146,7 @@ export default function Main() {
                   <CopyButton
                     type="button"
                     onClick={() => {
-                      navigator.clipboard.writeText(numbers);
+                      copy(numbers);
                     }}
                   >
                     Copiar
