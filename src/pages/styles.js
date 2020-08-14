@@ -14,6 +14,8 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding: 25px 0 35px;
+    color: #466b39;
+    font-family: Archivo;
 
     svg {
       margin-right: 10px;
@@ -26,7 +28,7 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 15px;
-    margin: 70px auto;
+    margin: 70px 4px auto;
   }
 `;
 

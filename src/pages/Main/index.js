@@ -74,7 +74,7 @@ export default function Main() {
       <Container>
         <DivIcon>
           <Link to="/historic" title="Histórico">
-            <FaHistory size="20px" color="#519739" />
+            <FaHistory size="20px" color="#466b39" />
           </Link>
         </DivIcon>
         <h1>

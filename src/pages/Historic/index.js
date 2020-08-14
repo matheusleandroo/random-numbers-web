@@ -33,7 +33,7 @@ export default function Historic() {
       <Container>
         <DivIcon>
           <Link to="/" title="Início">
-            <FaHome size="20px" color="#519739" />
+            <FaHome size="20px" color="#466b39" />
           </Link>
         </DivIcon>
         <h1>
