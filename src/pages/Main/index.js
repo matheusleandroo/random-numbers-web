@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { FaRandom, FaHistory, FaCopy } from 'react-icons/fa';
 
@@ -6,12 +6,10 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 import copy from 'copy-to-clipboard';
-import { validateNumber, validetFileds } from '../../helpers';
+import { validateNumber, validetFileds, generateNumber } from '../../helpers';
 
 import { Form, SubmitButton } from './styles';
 import { Container, DivIcon, Card } from '../styles';
-
-import api from '../../services/api';
 
 export default function Main() {
   const [payload, setPayload] = useState({
@@ -22,6 +20,13 @@ export default function Main() {
   const [numbers, setNumbers] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const deRef = useRef();
+  const quantidadeRef = useRef();
+
+  useEffect(() => {
+    deRef.current.focus();
+  }, []);
+
   async function handleSubmit(e, params) {
     e.preventDefault();
     setLoading(true);
@@ -31,9 +36,16 @@ export default function Main() {
 
       if (!validetFileds(params)) return;
 
-      const response = await api.post('/generate', params);
+      const response = await generateNumber(params);
 
-      const values = `${response.data}`.split(',').join(', ');
+      if (!response.length) {
+        toast.error(
+          'Ocorreu um erro inesperado, tente realizar o processo novamente'
+        );
+        return;
+      }
+
+      const values = `${response}`.split(',').join(', ');
 
       setNumbers(values);
 
@@ -53,6 +65,7 @@ export default function Main() {
       );
     } finally {
       setLoading(false);
+      quantidadeRef.current.blur();
     }
   }
 
@@ -76,6 +89,7 @@ export default function Main() {
               pattern="[0-9]*"
               inputMode="numeric"
               placeholder="De"
+              ref={deRef}
               value={payload.minNumber}
               onChange={(e) => {
                 if (validateNumber(e.target.value))
@@ -112,6 +126,7 @@ export default function Main() {
               pattern="[0-9]*"
               inputMode="numeric"
               placeholder="Quantidade"
+              ref={quantidadeRef}
               value={payload.amount}
               onChange={(e) => {
                 if (validateNumber(e.target.value, true))

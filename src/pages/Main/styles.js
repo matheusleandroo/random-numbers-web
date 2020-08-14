@@ -34,6 +34,9 @@ export const SubmitButton = styled.button.attrs((props) => ({
   width: 195px;
   min-height: 40px;
   opacity: 0.9;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
 
   display: flex;
   justify-content: center;

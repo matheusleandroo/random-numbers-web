@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
 export function validateNumber(value, isAmount = false) {
@@ -32,4 +33,40 @@ export function validetFileds(params) {
   }
 
   return true;
+}
+
+export async function generateNumber(params) {
+  const schema = Yup.object().shape({
+    minNumber: Yup.number().min(0).required(),
+    maxNumber: Yup.number().moreThan(Yup.ref('minNumber')).required(),
+    amount: Yup.number().min(1).max(10000).required(),
+  });
+
+  if (!(await schema.isValid(params))) {
+    return [];
+  }
+
+  try {
+    let numbers = [];
+
+    const { minNumber, maxNumber, amount } = params;
+
+    while (numbers.length !== parseInt(amount, 10)) {
+      const value = parseInt(
+        Math.random() * (maxNumber - minNumber + 1) + minNumber,
+        10
+      );
+
+      const checkNumber = numbers.filter((item) => item === value);
+
+      if (amount > maxNumber - minNumber) numbers.push(value);
+      else if (!checkNumber.length) numbers.push(value);
+    }
+
+    numbers = numbers.sort((a, b) => a - b);
+
+    return numbers;
+  } catch (error) {
+    return [];
+  }
 }
