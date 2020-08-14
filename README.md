@@ -8,6 +8,8 @@
   <img alt="Random Number Home" title="Random Number Home" src="https://raw.githubusercontent.com/matheusleandroo/random-numbers-web/master/src/assets/random-numbers-home.png" width="700px" />
 </h1>
 
+<h5 align="center">:exclamation: This project is online at <a href="https://www.numerosaleatorios.online/">random numbers</a> :scream:</h5>
+
 <h3>Getting Started</h3>
 
 These instructions will get you a copy of the project up and running on your local machine for development purposes.
@@ -34,8 +36,6 @@ After clone repository, go to folder and follow this steps:
 - Run **`yarn start`** to start de aplication.
 
 Now you can use from your browser "**Random Numbers WEB**".
-
-:exclamation: :exclamation: :exclamation: This project is online at <a href="https://www.numerosaleatorios.online/">random numbers</a> :scream:
 
 <h3>Built With</h3>
 
