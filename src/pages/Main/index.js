@@ -6,12 +6,10 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 
 import copy from 'copy-to-clipboard';
-import { validateNumber, validetFileds } from '../../helpers';
+import { validateNumber, validetFileds, generateNumber } from '../../helpers';
 
 import { Form, SubmitButton } from './styles';
 import { Container, DivIcon, Card } from '../styles';
-
-import api from '../../services/api';
 
 export default function Main() {
   const [payload, setPayload] = useState({
@@ -31,9 +29,16 @@ export default function Main() {
 
       if (!validetFileds(params)) return;
 
-      const response = await api.post('/generate', params);
+      const response = await generateNumber(params);
 
-      const values = `${response.data}`.split(',').join(', ');
+      if (!response.length) {
+        toast.error(
+          'Ocorreu um erro inesperado, tente realizar o processo novamente'
+        );
+        return;
+      }
+
+      const values = `${response}`.split(',').join(', ');
 
       setNumbers(values);
 
