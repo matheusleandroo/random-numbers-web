@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import { FaRandom, FaHistory, FaCopy } from 'react-icons/fa';
 
@@ -19,6 +19,13 @@ export default function Main() {
   });
   const [numbers, setNumbers] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const deRef = useRef();
+  const quantidadeRef = useRef();
+
+  useEffect(() => {
+    deRef.current.focus();
+  }, []);
 
   async function handleSubmit(e, params) {
     e.preventDefault();
@@ -58,6 +65,7 @@ export default function Main() {
       );
     } finally {
       setLoading(false);
+      quantidadeRef.current.blur();
     }
   }
 
@@ -81,6 +89,7 @@ export default function Main() {
               pattern="[0-9]*"
               inputMode="numeric"
               placeholder="De"
+              ref={deRef}
               value={payload.minNumber}
               onChange={(e) => {
                 if (validateNumber(e.target.value))
@@ -117,6 +126,7 @@ export default function Main() {
               pattern="[0-9]*"
               inputMode="numeric"
               placeholder="Quantidade"
+              ref={quantidadeRef}
               value={payload.amount}
               onChange={(e) => {
                 if (validateNumber(e.target.value, true))
