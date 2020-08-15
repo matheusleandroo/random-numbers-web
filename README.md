@@ -5,7 +5,7 @@
 </h3>
 
 <h1 align="center">
-  <img alt="Random Number Home" title="Random Number Home" src="https://raw.githubusercontent.com/matheusleandroo/random-numbers-web/master/src/assets/random-numbers-home.png" width="700px" />
+  <img alt="Random Number Home" title="Random Number Home" src="https://raw.githubusercontent.com/matheusleandroo/random-numbers-web/master/src/assets/images/random-numbers-home.png" width="700px" />
 </h1>
 
 <h5 align="center">:exclamation: This project is online at <a href="https://www.numerosaleatorios.online/">random numbers</a> :scream:</h5>
@@ -41,6 +41,16 @@ Now you can use from your browser "**Random Numbers WEB**".
 
 <ul>
   <li>ReactJS</li>
+</ul>
+
+<h3>Tools</h3>
+
+<ul>
+  <li>PropTypes</li>
+  <li>Yup</li>
+  <li>Styled-Components</li>
+  <li>React-Toastify</li>
+  <li>Axios</li>
 </ul>
 
 <h3>Authors</h3>
